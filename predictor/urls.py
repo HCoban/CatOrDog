@@ -17,8 +17,14 @@ from django.conf.urls import url
 from django.contrib import admin
 
 from cat_dog.views import index
+from cat_dog.views import new
+from cat_dog.views import create
+from cat_dog.views import show
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', index),
+    url(r'cat_dogs/new', new),
+    url(r'cat_dogs/create', create),
+    url(r'cat_dogs/(?P<cat_dog_id>[0-9]+)/$', show)
 ]
