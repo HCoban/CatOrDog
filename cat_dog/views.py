@@ -10,6 +10,7 @@ def new(request):
 
 def create(request):
     cat_dog = CatDog(path=request.POST['image_location'])
+    cat_dog.predictAnimal()
     cat_dog.save()
     return redirect(show, cat_dog.id)
 
