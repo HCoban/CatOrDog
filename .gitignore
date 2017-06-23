@@ -1,3 +1,5 @@
 .DS_store
 cat_or_dog_1.jpg
 cat_or_dog_2.jpg
+cat_dog/__pycache__/
+predictor/__pycache__/
