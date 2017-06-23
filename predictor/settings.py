@@ -23,7 +23,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = config('DEBUG', default=False, cast=bool)
+DEBUG = os.environ['DEBUG', default=False, cast=bool]
 
 ALLOWED_HOSTS = ['cat-or-dog.herokuapp.com']
 
@@ -76,7 +76,7 @@ WSGI_APPLICATION = 'predictor.wsgi.application'
 
 DATABASES = {
     'default': dj_database_url.config(
-        default=config('DATABASE_URL')
+        default=os.environ['DATABASE_URL']
     )
 }
 
