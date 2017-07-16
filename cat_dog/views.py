@@ -1,12 +1,15 @@
 from django.shortcuts import render
 from django.shortcuts import redirect
 from .models import CatDog
+from django import forms
 
 def index(request):
     return render(request, "index.html")
 
 def new(request):
-    return render(request, "new.html")
+    class ImageForm(forms.Form):
+        image_location = forms.CharField(widget=forms.TextInput(attrs={'id':'image-location', 'class': 'hidden'}))
+    return render(request, "new.html", { "form": ImageForm() })
 
 def create(request):
     cat_dog = CatDog(path=request.POST['image_location'])
