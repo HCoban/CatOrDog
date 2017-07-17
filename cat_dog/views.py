@@ -4,7 +4,8 @@ from .models import CatDog
 from django import forms
 
 def index(request):
-    return render(request, "index.html")
+    animals = CatDog.objects.order_by('-id')[:5]
+    return render(request, "index.html", { 'animals': animals })
 
 def new(request):
     class ImageForm(forms.Form):
