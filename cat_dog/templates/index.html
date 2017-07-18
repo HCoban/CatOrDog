@@ -7,7 +7,7 @@
 
 <div class="container">
   <div class="row">
-    <a class="btn btn-success pull-right" href="/cat_dogs/new.html">
+    <a class="btn btn-success pull-right new-prediction" href="/cat_dogs/new.html">
       New Prediction
     </a>
     <div class="jumbotron">
@@ -39,10 +39,30 @@
   		</a>
   	</div>
   </div>
+
+  <form class="form hidden" action="/cat_dogs/create" method="post">
+    {% csrf_token %}
+    {% bootstrap_form form %}
+    {% buttons %}
+    <button type="submit" name="button" class="btn btn-primary" id="upload-image">
+      Upload image
+    </button>
+    {% endbuttons %}
+  </form>
 </div>
 
 <script type="text/javascript">
   $(document).ready(function () {
-    $($('.item')[0]).addClass('active')
+    $($('.item')[0]).addClass('active');
+
+    $('.new-prediction').click(event, function () {
+      event.preventDefault();
+      cloudinary.openUploadWidget(
+        { cloud_name: 'dguiepgvw', upload_preset: 'iwwioegp'}, function (error, result) {
+          $("#image-location").val(result[0].url)
+          $("form").submit()
+        }
+      );
+    });
   });
 </script>
