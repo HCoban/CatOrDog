@@ -14,7 +14,7 @@ def create(request):
     
     # cat_dog.predictAnimal()
     cat_dog.save()
-    from .celeryq import predict
+    from .celery import predict
     predict.delay(cat_dog.id, cat_dog.path)
     return redirect(show, cat_dog.id)
 

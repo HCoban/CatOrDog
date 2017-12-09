@@ -133,6 +133,6 @@ STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
 
-CELERY_IMPORTS = {
-  'celerq'
-}
+# CELERY_IMPORTS = {
+#   'celerq'
+# }
