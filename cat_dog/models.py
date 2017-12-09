@@ -1,30 +1,4 @@
 from django.db import models
-import numpy as np
-import tensorflow as tf
-sess = tf.Session()
-from keras.models import Sequential
-from keras.layers import Conv2D
-from keras.layers import MaxPooling2D
-from keras.layers import Flatten
-from keras.layers import Dense
-from keras.models import model_from_json
-from keras.preprocessing import image
-from keras import backend as K
-K.set_session(sess)
-import urllib.request
-import io
-
-def loadModel():
-    json_file = open('classifier/model.json', 'r')
-    loaded_model_json = json_file.read()
-    json_file.close()
-    loaded_model = model_from_json(loaded_model_json)
-    loaded_model.load_weights("classifier/model.h5")
-    loaded_model.compile(optimizer = 'adam', loss = 'binary_crossentropy', metrics = ['accuracy'])
-    return loaded_model
-
-classifier = loadModel()
-GRAPH = tf.get_default_graph()
 
 class CatDog(models.Model):
     animal = models.CharField(max_length=100)

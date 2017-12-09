@@ -11,8 +11,11 @@ def index(request):
 
 def create(request):
     cat_dog = CatDog(path=request.POST['image_location'])
-    cat_dog.predictAnimal()
+    
+    # cat_dog.predictAnimal()
     cat_dog.save()
+    from .celeryq import predict
+    predict.delay(cat_dog.id, cat_dog.path)
     return redirect(show, cat_dog.id)
 
 def show(request, cat_dog_id):

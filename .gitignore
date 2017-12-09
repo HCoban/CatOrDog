@@ -4,3 +4,4 @@ cat_or_dog_2.jpg
 cat_dog/__pycache__/
 predictor/__pycache__/
 env.py
+__pycache__/

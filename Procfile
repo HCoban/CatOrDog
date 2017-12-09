@@ -1,1 +1,1 @@
-web: newrelic-admin run-program gunicorn predictor.wsgi
+web: newrelic-admin run-program gunicorn cat_dog.wsgi
