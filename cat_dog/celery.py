@@ -12,11 +12,11 @@ from six.moves import cPickle
 
 # set the default Django settings module for the 'celery' program.
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'cat_dog.settings')
-app = Celery('cat_dog', backend='amqp', broker='pyamqp://')
+app = Celery('cat_dog')
 
 # Using a string here means the worker will not have to
 # pickle the object when using Windows.
-app.config_from_object('django.conf:settings')
+app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks(lambda: settings.INSTALLED_APPS)
 
 tf_model = None

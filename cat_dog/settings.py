@@ -13,8 +13,6 @@ https://docs.djangoproject.com/en/1.11/ref/settings/
 import os
 import dj_database_url
 
-CELERY_BROKER_URL = 'amqp://'
-
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -23,14 +21,15 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'q-#+#!5=a&#dk-imt83t+(2zyiuf(h2)15+6w7r1taeu#fgu$b' #os.environ['SECRET_KEY']
+SECRET_KEY = os.environ['SECRET_KEY']
+
+CELERY_BROKER_URL = os.environ['CLOUDAMQP_URL']
+CELERY_BROKER_POOL_LIMIT = 1
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
-# ALLOWED_HOSTS = ['cat-or-dog.herokuapp.com']
-ALLOWED_HOSTS = ['127.0.0.1']
-
+ALLOWED_HOSTS = ['cat-or-dog.herokuapp.com']
 
 # Application definition
 
@@ -80,15 +79,9 @@ WSGI_APPLICATION = 'cat_dog.wsgi.application'
 # https://docs.djangoproject.com/en/1.11/ref/settings/#databases
 
 DATABASES = {
-  'default':
-    {
-      'ENGINE': 'django.db.backends.sqlite3',
-      'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
- 
-    #   dj_database_url.config(
-    #     default=os.environ['DATABASE_URL']
-    # )
+  'default': dj_database_url.config(
+        default=os.environ['DATABASE_URL']
+    )
 }
 
 
@@ -132,7 +125,3 @@ STATIC_URL = '/static/'
 STATICFILES_DIRS = (
     os.path.join(PROJECT_ROOT, 'static'),
 )
-
-# CELERY_IMPORTS = {
-#   'celerq'
-# }
