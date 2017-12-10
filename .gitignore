@@ -5,3 +5,4 @@ cat_dog/__pycache__/
 predictor/__pycache__/
 env.py
 __pycache__/
+.env
