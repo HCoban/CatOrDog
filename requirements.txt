@@ -149,7 +149,7 @@ requests==2.14.2
 tensorflow==1.2.0
 # terminado==0.6
 # testpath==0.3
-Theano==1.0.0
+Theano==0.9.0
 # toolz==0.8.2
 # tornado==4.5.1
 # traitlets==4.3.2
