@@ -27,7 +27,6 @@ def on_worker_init(**_):
   # Create server with model
   import keras
   tf_model = keras.models.load_model('classifier/model_using_keras_save.h5')
-  save_file.close()
 
 @app.task
 def predict(id, path):
