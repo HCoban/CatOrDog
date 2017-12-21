@@ -25,8 +25,9 @@ tf_model = None
 def on_worker_init(**_):
   global tf_model
   # Create server with model
-  save_file = open('classifier/model.save', 'rb')
-  tf_model = cPickle.load(save_file)
+  save_file = open('classifier/model_using_keras_save.h5', 'rb')
+  import keras
+  tf_model = keras.models.load_model(save_file)
   save_file.close()
 
 @app.task
