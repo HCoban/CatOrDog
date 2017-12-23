@@ -11,7 +11,11 @@
       Back to home page
     </a>
     <div class="jumbotron">
+    {% if cat_dog.animal %}
       <h1>I am a {{ cat_dog.animal}}</h1>
+    {% else %}
+      <h1>Predicting animal. Please refresh!</h1>
+    {% endif %}
     </div>
   </div>
   <div class="row">
