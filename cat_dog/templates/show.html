@@ -14,7 +14,7 @@
     {% if cat_dog.animal %}
       <h1>I am a {{ cat_dog.animal}}</h1>
     {% else %}
-      <h1>Predicting animal. Please refresh!</h1>
+      <h1 id="predicting">Predicting animal. Page will refresh!</h1>
     {% endif %}
     </div>
   </div>
@@ -22,3 +22,14 @@
     <img src="{{ cat_dog.path}}" alt="" style="width: 100%;">
   </div>
 </div>
+
+<script type="text/javascript">
+  $(document).ready(function () {
+    var predicting = $('#predicting').length === 1
+    if (predicting) {
+      window.setTimeout(() => {
+        window.location.reload();
+      }, 1000);
+    }
+  });
+</script>
