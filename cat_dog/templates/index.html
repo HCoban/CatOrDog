@@ -24,11 +24,9 @@
   		<div class="carousel-inner">
         {% for animal in animals %}
           <div class="item">
-    				<img src={{ animal.path }} style="width: 100%;">
-    				<div class="carousel-caption">
-    					<h3>{{ animal.animal }}</h3>
-    				</div>
-    			</div>
+            <h1 style="text-align: center">{{ animal.animal }}</h1>
+            <img src={{ animal.path }} style="width: 100%;">
+          </div>
         {% endfor %}
   		</div>
   		<a class="left carousel-control" href="#my-carousel" data-slide="prev">
